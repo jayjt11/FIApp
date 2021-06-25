@@ -3,6 +3,7 @@ package com.expleo.expleodemo
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import android.view.Window
 import com.fiserv.dps.mobile.sdk.bridge.controller.Bridge
 import com.fiserv.dps.mobile.sdk.bridge.model.Zelle
 
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        supportRequestWindowFeature(Window.FEATURE_NO_TITLE)
         setContentView(R.layout.activity_main)
 
         // optionally: set the contact pre-caching flag (default: false)
@@ -37,10 +39,5 @@ class MainActivity : AppCompatActivity() {
             replace(R.id.fragment_holder, view)
             commit()
         }
-    }
-
-    fun doSomething(view: View) {
-        val popup = bridge.popup()
-        popup.show(supportFragmentManager, popup.tag)
     }
 }
